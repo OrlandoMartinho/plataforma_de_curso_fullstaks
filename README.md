@@ -72,14 +72,5 @@ Após clonar o repositório, siga as etapas abaixo para configurar e iniciar o s
 - CSS
 - JavaScript
 
-## Contribuindo
 
-Contribuições são bem-vindas! Abra uma issue para discutir as mudanças que você gostaria de fazer ou envie um pull request.
 
-## Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
----
-
-Este README.md fornece instruções detalhadas para a configuração e execução do aplicativo, bem como uma visão geral das tecnologias utilizadas e da estrutura do projeto, de acordo com as especificações fornecidas.
