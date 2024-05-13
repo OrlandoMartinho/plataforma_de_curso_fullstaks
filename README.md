@@ -62,15 +62,7 @@ Após clonar o repositório, siga as etapas abaixo para configurar e iniciar o s
   - `utils/` - Funções adicionais.
 - `uploads/` - Pasta para receber todos os arquivos enviados pelos usuários.
 
-## Tecnologias Utilizadas
 
-- Node.js
-- Express.js
-- MySQL
-- Apache HTTP Server
-- HTML
-- CSS
-- JavaScript
 
 
 
