@@ -1,6 +1,3 @@
-Aqui está uma versão revisada do README.md com a estrutura do projeto de acordo com as informações fornecidas:
-
----
 
 # Plataforma de Curso
 
