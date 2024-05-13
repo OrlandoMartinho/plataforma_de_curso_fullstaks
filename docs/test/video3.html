@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas de Videochamada</title>
+</head>
+<body>
+    <h1>Ofertas de Videochamada</h1>
+    <div id="offers"></div>
+
+    <script>
+        const socket = new WebSocket('ws://192.168.1.162:3001');
+
+        socket.onopen = function() {
+            console.log('Conexão estabelecida com o servidor WebSocket');
+        };
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            if (data.type === 'solicitarVideochamada') {
+                const offerDiv = document.createElement('div');
+                offerDiv.innerHTML = `<p>Solicitação de videochamada recebida do usuário ${data.data.id_usuario}</p>
+                    <button onclick="aceitarVideochamada(${data.data.id_usuario})">Aceitar</button>
+                    <button onclick="rejeitarVideochamada(${data.data.id_usuario})">Rejeitar</button>`;
+                document.getElementById('offers').appendChild(offerDiv);
+            }
+        };
+
+        function aceitarVideochamada(userId2) {
+            // Aqui você envia uma mensagem para aceitar a chamada de vídeo
+            const accessToken = ''; // Coloque o token de acesso aqui
+            socket.send(JSON.stringify({ type: 'aceitarVideochamada', accessToken, userId2 }));
+            // Remova a oferta da lista
+            document.getElementById('offers').innerHTML = '';
+        }
+
+        function rejeitarVideochamada(userId2) {
+            // Aqui você envia uma mensagem para rejeitar a chamada de vídeo
+            const accessToken = ''; // Coloque o token de acesso aqui
+            socket.send(JSON.stringify({ type: 'rejeitarVideochamada', accessToken, userId2 }));
+            // Remova a oferta da lista
+            document.getElementById('offers').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

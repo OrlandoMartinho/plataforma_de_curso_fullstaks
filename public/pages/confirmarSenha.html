@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de cursos</title>
+    <link rel="stylesheet" href="../css/confirmarSenha.css">
+    <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="main">
+        <div class="img-login">
+            <img src="../assets/img/loginImg.png" alt="">
+            <p>
+                Essa página fornece instruções claras sobre como os usuários podem redefinir suas senhas caso as
+                 esqueçam, e também oferece suporte caso encontrem problemas durante o processo de recuperação.
+            </p>
+        </div>
+        <div class="form">
+            <img class="logo" src="../assets/img/logo.png" alt="">
+            <div class="form-content">
+                <h1>Esqueceu a Senha?</h1>
+                <p>Para avançares por favor insira a sua nova senha</p>
+                <form action="">
+                    <div class="inputs"> 
+                        <input type="number" name="" id="" placeholder="1" maxlength="1">
+                        <input type="number" name="" id="" placeholder="1" maxlength="1">
+                        <input type="number" name="" id="" placeholder="1" maxlength="1">
+                        <input type="number" name="" id="" placeholder="1" maxlength="1">
+                    </div>
+                    <div class = "btn-form">
+                        <button>
+                            <a href="home.html" style="color: #ffff;">Avançar</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+            // Seleciona todos os inputs com a classe 'inputs'
+        var inputs = document.querySelectorAll('.inputs input');
+
+        // Adiciona um ouvinte de eventos de entrada a cada input
+        inputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                // Se o valor do input for maior que 1, ajusta para apenas o primeiro caractere
+                if (this.value.length > 1) {
+                    this.value = this.value.slice(0, 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

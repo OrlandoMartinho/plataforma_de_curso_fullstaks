@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family:verdana;
+}
+body{
+    position:relative;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+:root{
+    --color-background:#EFF3F9;
+    --color-white:#fff;
+    --text-color:#263238;
+    --color-secondary:#0065D4;
+    --color-red:#F85E5E;
+}
+.container{
+    gap:4rem;
+    display: flex;
+    padding-top:2rem;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.play-list{
+    margin-right:2.6rem;
+    padding:4rem 0 0;
+    width: 36rem;
+    box-shadow: 0px 0px 20px 0px #d9d9d9;
+    border-radius:.8rem;
+    border: 1px solid var(--color-secondary);
+}
+.play-list h2{
+    color:var(--color-secondary);
+    margin-bottom:3rem;
+    padding:0 2rem;
+    font-weight:100;
+}
+.sub-title{
+    background:#CED0D4;
+    display:flex;
+    padding:2rem;
+    justify-content:space-between;
+    align-items:center;
+}
+.title-video{
+    gap:1rem;
+    display:flex;
+    align-items:center;
+
+}
+.circle-number{
+    background:#9DBDEE;
+    color:var(--color-white);
+    width:6rem;
+    height:6rem;
+    font-size:2rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:9999px;
+}
+.outher-videos{
+    display:none;
+}
+.outher-videos.on{
+    display:block;
+    padding:2rem;
+    color:#ffff;
+    background:var(--color-secondary);
+}
+p{
+    font-size:1.2rem;
+}
+.btn-click{
+    cursor:pointer;
+}
+.video{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:2rem;
+}
+.video-center{
+    display:flex;
+    gap:2rem;
+    align-items:center;
+}
+.circle{
+    padding:1rem;
+    border-radius:9999px;
+    background:#9DBDEE;
+}
+.circle.selected{
+    padding:.5rem;
+    border-radius:9999px;
+    background:var(--color-white);
+    border: 6px solid #9DBDEE;
+}
+.other{
+    background:#CED0D4;
+}
+.divider{
+    width:100%;
+    border:1px solid #9DBDEE;
+
+}
+.Player h2{
+    color:var(--color-secondary);
+}
+.Player{
+    margin:6rem 0rem 4rem 18rem;
+}
+video{
+    width:50vw;
+    height:60vh;
+}
+.back{
+    display:flex;
+    cursor:pointer;
+    gap:1rem;
+    margin-bottom:2rem;
+    align-items:center;
+}
+.user{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:4rem;
+    height:4rem;
+    border-radius:9999px;
+}
+.user img{
+    width:100%;
+}
+.user-date{
+    display:flex;
+    align-items:center;
+    gap:2rem;
+    margin:2rem 0;
+}

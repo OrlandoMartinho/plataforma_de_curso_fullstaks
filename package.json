@@ -1,0 +1,38 @@
+{
+  "name": "plataforma_de_curso_backend",
+  "version": "1.0.0",
+  "description": "Beckend do projecto plataforma de cursos da ALF",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/OrlandoMartinho/plataforma_de_curso_backend.git"
+  },
+  "keywords": [
+    "Plataforma",
+    "curso"
+  ],
+  "author": "Orlando Saiombo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "date-fns": "^3.6.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.19.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.7",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0"
+  }
+}

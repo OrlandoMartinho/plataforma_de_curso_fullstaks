@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../../css/upload.css">
+    <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <style>
+        .video-preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .video-item {
+            margin: 10px;
+        }
+        .video-item video {
+            max-width: 200px;
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="assinatura">
+        <div class="assinatura-information">
+            <div class="icon-close">
+                <img src="../../assets/icon/close.png" alt="">
+            </div>
+            <div class="content-assinatura">
+                <div class="assinatura-img">
+                    <img src="../../assets/icon/check-circle.png" alt="">
+                </div>
+                <h6>Vídeo carregado com sucesso</h6>
+            </div>
+        </div>
+    </div>
+    <section class="items">
+        <div class="lateral-menu">
+            <img class="imgHome" src="../../assets/img/logoHome.png" alt="">
+            <nav>
+                <ul>
+                    <li class="center-items "><img src="../../assets/icon/home.png" alt=""><a href="home-admin.html">Visão global</a></li>
+                    <li class="center-items select"><img src="../../assets/icon/upload-cloud.png" alt=""><a href="upload.html">Cursos</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="main-header">
+                <div class="main-header-start">
+                    <div class="input-search">
+                        <img src="../../assets/icon/search.png" alt="" class="search">
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                </div>
+                <div class="profile">
+                    <a href="notification-admin.html">
+                        <img src="../../assets/icon/bell.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="go-back">
+                <a href="upload-initial.html">
+                    <img src="../../assets/icon/arrow-left.png" alt="">
+                    <p>voltar</p>
+                </a>
+            </div>
+            <div class="upload-container">
+                <div class="form">
+                    <input type="text" placeholder="Nome do Formador">
+                    <input type="text" placeholder="Titulo">
+                    <input type="text" placeholder="Categoria">
+                    <input type="text" placeholder="Modelo">
+                    <input class="description" type="text" placeholder="Descrição" >
+                </div>
+                <div class="upload">
+                    <form action="">
+                        <label for="file-upload" class="custom-file-upload">
+                            <input id="file-upload" type="file" accept="video/*" multiple>
+                            <img src="../../assets/icon/upload.png" alt="">
+                            <h5>Carrega aqui os seus vídeos</h5>
+                            <p>Podes  carrega mais de 1000 GB</p>
+                        </label>
+                        <div class="video-previews">
+    
+                        </div>
+                        <div class="button">
+                            <button class="btn-adicionar">Enviar</button>
+                        </div>
+                    </form>
+                    <div class="video-preview" id="video-preview"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    const fileUpload = document.getElementById('file-upload');
+        const videoPreviews = document.querySelector('.video-previews');
+
+    fileUpload.addEventListener('change', function(event) {
+        const files = event.target.files;
+
+    for (const file of files) {
+    // Criar elementos dinâmicos para cada arquivo
+    const previewDiv = document.createElement('div');
+    const previewVideo = document.createElement('video');
+    const previewTitle = document.createElement('h5');
+
+    // Configurar elementos
+    previewVideo.muted = true;
+    previewVideo.controls = false;
+
+    // Definir a origem do vídeo (escolha um método):
+    // Método 1 (comentado): Pode não funcionar em todos os navegadores
+    // previewVideo.src = URL.createObjectURL(file);
+
+    // Método 2: Mais confiável usando FileReader
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      previewVideo.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+
+    previewTitle.textContent = file.name;
+
+    // Adicionar evento de clique (opcional)
+    previewVideo.addEventListener('click', function() {
+      // Criar objeto de vídeo
+      const video = new Video();
+      video.src = previewVideo.src; // Definir origem do vídeo
+
+      // Reproduzir vídeo no clique
+      video.play();
+    });
+
+    // Apresentar elementos
+    previewDiv.appendChild(previewVideo);
+    previewDiv.appendChild(previewTitle);
+    videoPreviews.appendChild(previewDiv);
+  }
+});
+
+
+
+    </script>
+</body>
+</html>

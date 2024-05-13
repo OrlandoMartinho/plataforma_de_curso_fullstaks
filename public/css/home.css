@@ -1,0 +1,262 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family:verdana;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+:root{
+    --color-background:#EFF3F9;
+    --color-white:#fff;
+    --text-color:#263238;
+    --color-secondary:#0065D4;
+    --color-red:#F85E5E;
+}
+nav{
+    margin-left:2rem;
+    margin-right:1rem;
+}
+
+.items{
+    display:flex;
+}
+.lateral-menu{
+    background:var(--color-background);
+    height:100vh;
+    width:24rem;
+}
+.lateral-menu h1{
+    text-align:center;
+    font-size:2rem;
+    color:var(--color-primary);
+    padding: 7rem 0rem 3rem 0rem;
+}
+nav ul li a{
+    font-size:1.4rem;
+    color:var(--color-black);
+    margin:1.8rem 0;
+}
+.center-items{
+    display:flex;
+    gap:2rem;
+    flex-direction:row;
+    align-items:center;
+}
+.imgHome{
+    display:block;
+    margin:2rem auto;
+
+}
+.select{
+    border-radius:.8rem;
+    background:var(--color-secondary);
+}
+.select a{
+    
+    color:var(--color-white);
+}
+.main{
+    width:100%;
+    height:100vh;
+}
+.main-header{
+    display:flex;
+    align-items:center;
+    justify-content:end;
+    gap:12rem;
+    padding:2rem 2rem;
+    width:100%;
+    border-bottom:2px solid var(--color-background);
+}
+.input-search {
+    padding:1.4rem 1rem;
+    width:34rem;
+    border-radius:1rem;
+    background:var(--color-background)
+}
+.input-search input{
+    flex:1;
+    width:100%;
+    outline:none;
+    border:none;
+    background:var(--color-background);
+}
+.input-search{
+    display:flex;
+    gap:1.8rem;
+    align-items:center;
+
+}
+.search{
+    cursor: pointer;
+}
+.profile{
+    display:flex;    
+    gap:1.8rem;
+    align-items:center;
+}
+.about{
+    display:flex;
+    position: relative;
+    padding:2rem;
+    border-radius:.8rem;
+    margin:2rem 4rem;
+    color:var(--color-white);
+    background:var(--color-secondary);
+}
+.text-about{
+    margin-top:1rem;
+    margin-bottom:2rem;
+}
+.about img{
+    width:30%;
+}
+
+.about-information a{
+    padding:1rem 3.6rem;
+    border-radius:.4rem;
+    background:var(--color-white);
+    color:var(--color-secondary);
+
+}
+.most-View{
+    margin:0rem 4rem;
+    padding:2rem;
+    background:var(--color-background);
+}
+.most-View h1{
+    margin-bottom:1rem;
+    font-weight:100;
+    color:var(--color-secondary);
+
+}
+.most-View h2{
+    font-weight:100;
+    color:var(--color-secondary);
+
+}
+.cursosImg{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+.icon-figma{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:4rem;
+    height:4rem;
+    border-radius:.4rem;
+    background:#9DBDEE;
+}
+.icon-execel{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:4rem;
+    height:4rem;
+    border-radius:.4rem;
+    background:#61E3DB;
+    
+}
+.icon-expre{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:4rem;
+    height:4rem;
+    border-radius:.4rem;
+    background:#AF9DEE;
+}
+.cursos{
+    gap:1rem;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.curso p{
+    margin:.2rem 0;
+    font-size:.8rem;
+}
+.curso{
+    padding:.8rem 1rem;
+    background:var(--color-white);
+}
+.profile-more{
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+}
+.profile-more.on{
+    right: 0;
+    top: -1rem;
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    border-radius: 1rem;
+    width: 300px;
+    height: 200px;
+    background: var(--color-white);
+}
+.Profile-btn{
+    cursor: pointer;
+}
+.profile-Icon img{
+    width: 6rem;
+    height: 6rem;
+}
+.profile-Icon{
+    padding: 0 2rem;
+    gap:.8rem;
+    display: flex;
+    align-items: center;
+    padding-bottom: .8rem;
+    border-bottom: 3px solid var(--color-background);
+}
+.about .profile-more .profile-Icon .title{
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+}
+.text{
+    color: var(--text-color);
+}
+
+.contaInformation{
+    border-bottom: 3px solid var(--color-background);
+}
+.InformationProfile{
+    gap:.8rem;
+    display: flex;
+    padding: 0 2rem;
+    align-items: center;
+}
+.InformationProfile h6{
+    font-weight:100;
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+}
+.InformationProfile p{
+    color: var(--text-color);
+    font-size: .8rem;
+}
+.InformationProfile img{
+    width: 1.8rem;
+    margin: 1rem 0;
+}
+.logout{
+    padding: 1.4rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+.logout img{
+    width: 1.8rem;
+}
+.logout h6{
+    color: var(--color-red);
+}

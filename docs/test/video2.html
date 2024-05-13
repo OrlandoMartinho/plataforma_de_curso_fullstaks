@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.4.6/adapter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-peer/simplepeer.min.js"></script>
+    <script>
+        const socket = new WebSocket('ws://192.168.1.162:3001');
+        let peer;
+
+        socket.onopen = function() {
+            console.log('Conexão estabelecida com o servidor WebSocket');
+        };
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            if (data.type === 'users') {
+                console.log('Usuários conectados:', data.users);
+                if (data.users.length > 1) {
+                    // Se houver mais de um usuário, não ser o iniciador da chamada
+                    peer = new SimplePeer({ initiator: false, trickle: false });
+                    peer.on('signal', signal => {
+                        socket.send(JSON.stringify({ type: 'signal', to: data.users[0], signal: signal }));
+                    });
+                    peer.on('stream', stream => {
+                        const videoElement = document.getElementById('remoteVideo');
+                        videoElement.srcObject = stream;
+                    });
+
+                    // Solicitar permissão de acesso à câmera e ao microfone
+                    requestPermissions();
+                }
+            } else if (data.type === 'signal') {
+                if (!peer) {
+                    peer = new SimplePeer({ trickle: false });
+                    peer.on('signal', signal => {
+                        socket.send(JSON.stringify({ type: 'signal', to: data.from, signal: signal }));
+                    });
+                    peer.on('stream', stream => {
+                        const videoElement = document.getElementById('remoteVideo');
+                        videoElement.srcObject = stream;
+                    });
+                }
+                peer.signal(data.signal);
+            }
+        };
+
+        function requestPermissions() {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(stream => {
+                    const videoElement = document.getElementById('localVideo');
+                    videoElement.srcObject = stream;
+                    peer.addStream(stream);
+                })
+                .catch(error => {
+                    console.error('Erro ao acessar a câmera/microfone:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Video Chat</h1>
+    <h2>User1 (Remoto)</h2>
+    <video id="remoteVideo" autoplay></video>
+    <h2>User2 (Local)</h2>
+    <video id="localVideo" autoplay muted></video>
+
+    <div id="permissionMessage">
+        <p>Para iniciar a videochamada, permita o acesso à câmera e ao microfone.</p>
+        <button onclick="requestPermissions()">Permitir</button>
+    </div>
+</body>
+</html>
