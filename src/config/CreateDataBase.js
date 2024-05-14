@@ -171,7 +171,7 @@ connection.connect(async (err) => {
       const senhaEncriptada = await bcrypt.hashSync(admCredenciais.senha, salt);
       const accessToken = jwt.sign({ id_usuario: 1, email:admCredenciais.email,senha:senhaEncriptada ,nome_de_usuario:"administrador"}, secretKey.secretKey);
       // Criar uma conexão com o banco de dados
-      const nome='Clinica Geral,Pediatria,Ginicologia,cardiologia,Ortopedia,Dermatologia,Psicologia,Nutrição'
+      const nome='administrador'
       const deleteQuery = 'SELECT * FROM usuarios WHERE id_usuario = ?';
       const insertQuery = 'INSERT INTO usuarios (email, senha,token,nome) VALUES (?,?,?,?)';
   

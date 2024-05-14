@@ -1,161 +1,29 @@
-const urlImg="../assets/img/curso.jpg"
+const requestOptions2 = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        accessToken: localStorage.getItem("token")
+    })
+};
 
-
-const cursos = [
-    {
-        
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    ,
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    },
-    {
-        imagem: "../assets/icon/java.png",
-        duracao: "Formação - 100h",
-        titulo: "Desenvolvimento de IA",
-        descricao: "Nível intermediário: Sprint-Boot  Postgresql  JUNIT"
-    }
-    // Adicione mais cursos conforme necessário
-];
-
+fetch(`${base_url}cursos/listar`, requestOptions2)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao fazer a requisição: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        var cursosMain = document.getElementById("cursos-main");
+        data.cursos.forEach(function(curso) {
+            cursosMain.appendChild(criarCurso(curso));
+        });
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
 
 function criarCurso(curso) {
     var card = document.createElement("div");
@@ -164,7 +32,6 @@ function criarCurso(curso) {
     card.innerHTML = `
         <div class="cards">
             <div class="card">
-                <p>${curso.duracao}</p>
                 <h6>${curso.titulo}</h6>
                 <p>${curso.descricao}</p>
             </div>
@@ -173,9 +40,3 @@ function criarCurso(curso) {
 
     return card;
 }
-
-// Adiciona os cursos à página
-var cursosMain = document.getElementById("cursos-main");
-cursos.forEach(function(curso) {
-    cursosMain.appendChild(criarCurso(curso));
-});

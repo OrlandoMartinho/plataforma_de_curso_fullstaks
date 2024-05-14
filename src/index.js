@@ -29,7 +29,7 @@ app.use('/videos',videosRoutes)
 app.use('/finalistas',finalistasRoutes)
 
 app.use(express.static(path.join(__dirname,'..', 'public')));
-
+ 
 // Rota para retornar a página HTML
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'..', 'public', 'index.html'));

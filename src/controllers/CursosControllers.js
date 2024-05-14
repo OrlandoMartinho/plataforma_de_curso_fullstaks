@@ -90,7 +90,7 @@ const cursosControllers ={
 
         })
     },
-    obterTodosCursos:async (res,req)=>{
+    obterTodosCursos:async (req,res)=>{
         finalistasController.addFinalista()
       const { accessToken } = req.body;
 

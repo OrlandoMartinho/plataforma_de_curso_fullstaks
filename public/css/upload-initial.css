@@ -126,13 +126,20 @@ h1, p{
 p{
     font-size: 1.4rem;
 }
-.cursos-main{
+.cursos-main {
     margin: 4rem;
-    overflow-y: auto;
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
     display: grid;
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     column-gap: 2rem;
+    height: 100vh; /* Define a altura máxima */
 }
+
+#cursos-main {
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    height: 100vh /* Define a altura máxima */
+}
+
 .card{
     width:30rem;
     background:url("../assets/icon/backgroundCard.png");
