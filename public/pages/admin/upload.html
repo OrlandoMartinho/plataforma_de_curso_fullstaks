@@ -6,21 +6,6 @@
     <title>Home</title>
     <link rel="stylesheet" href="../../css/upload.css">
     <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
-    <style>
-        .video-preview {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .video-item {
-            margin: 10px;
-        }
-        .video-item video {
-            max-width: 200px;
-            max-height: 200px;
-        }
-    </style>
-    <script src="../../requests/autenticacaoADM.js"></script>
 </head>
 <body>
     <div class="assinatura">
@@ -42,8 +27,8 @@
             <nav>
                 <ul>
                     <li class="center-items "><img src="../../assets/icon/home.png" alt=""><a href="home-admin.html">Visão global</a></li>
-                    <li class="center-items select"><img src="../../assets/icon/upload-cloud.png" alt=""><a href="upload-initial.html">Cursos</a></li>
-                    <li class="center-items "><img src="" alt=""><a href="finalistas.html">Finalistas</a></li>
+                    <li class="center-items select"><img src="../../assets/icon/upload-cloud.png" alt=""><a href="upload.html">Cursos</a></li>
+                    <li class="center-items "><img src="../../assets/icon/icons8_books.png" alt=""><a href="finalistas.html">Finalistas</a></li>
                 </ul>
             </nav>
         </div>
@@ -69,10 +54,17 @@
             </div>
             <div class="upload-container">
                 <div class="form">
-                    <input type="text" placeholder="Nome do Formador">
-                    <input type="text" placeholder="Titulo">
-                    <input type="text" placeholder="Categoria">
-                    <input type="text" placeholder="Modelo">
+                    <input type="text" placeholder="Nome do Formador" id="nome">
+                    <input type="text" placeholder="Titulo" id="titulo">
+                    <input type="text" placeholder="Categoria" id="categoria">
+                    <select id="modelo" name="modelo" onchange="removePlaceholderOption()" class="modelo">
+                        <option value="" disabled selected hidden>Selecionar modulo</option>
+                        <option value="modelo1">Modulo 1</option>
+                        <option value="modelo2">Modulo 2</option>
+                        <option value="modelo3">Modulo 3</option>
+                        <!-- Adicione mais opções conforme necessário -->
+                    </select>
+
                     <input class="description" type="text" placeholder="Descrição" >
                 </div>
                 <div class="upload">
@@ -87,7 +79,7 @@
     
                         </div>
                         <div class="button">
-                            <button class="btn-adicionar">Enviar</button>
+                            <button class="btn-adicionar" id="cadastrar">Enviar</button>
                         </div>
                     </form>
                     <div class="video-preview" id="video-preview"></div>
@@ -97,55 +89,59 @@
     </section>
 
     <script>
-    const fileUpload = document.getElementById('file-upload');
-        const videoPreviews = document.querySelector('.video-previews');
+        function removePlaceholderOption() {
+            const placeholderOption = document.querySelector('#modelo option[value=""]');
+            placeholderOption.disabled = true;
+        }
+        const fileUpload = document.getElementById('file-upload');
+            const videoPreviews = document.querySelector('.video-previews');
 
-    fileUpload.addEventListener('change', function(event) {
-        const files = event.target.files;
+        fileUpload.addEventListener('change', function(event) {
+            const files = event.target.files;
 
-    for (const file of files) {
-    // Criar elementos dinâmicos para cada arquivo
-    const previewDiv = document.createElement('div');
-    const previewVideo = document.createElement('video');
-    const previewTitle = document.createElement('h5');
+        for (const file of files) {
+        // Criar elementos dinâmicos para cada arquivo
+        const previewDiv = document.createElement('div');
+        const previewVideo = document.createElement('video');
+        const previewTitle = document.createElement('h5');
 
-    // Configurar elementos
-    previewVideo.muted = true;
-    previewVideo.controls = false;
+        // Configurar elementos
+        previewVideo.muted = true;
+        previewVideo.controls = false;
 
-    // Definir a origem do vídeo (escolha um método):
-    // Método 1 (comentado): Pode não funcionar em todos os navegadores
-    // previewVideo.src = URL.createObjectURL(file);
+        // Definir a origem do vídeo (escolha um método):
+        // Método 1 (comentado): Pode não funcionar em todos os navegadores
+        // previewVideo.src = URL.createObjectURL(file);
 
-    // Método 2: Mais confiável usando FileReader
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      previewVideo.src = event.target.result;
-    };
-    reader.readAsDataURL(file);
+        // Método 2: Mais confiável usando FileReader
+        const reader = new FileReader();
+        reader.onload = (event) => {
+        previewVideo.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
 
-    previewTitle.textContent = file.name;
+        previewTitle.textContent = file.name;
 
-    // Adicionar evento de clique (opcional)
-    previewVideo.addEventListener('click', function() {
-      // Criar objeto de vídeo
-      const video = new Video();
-      video.src = previewVideo.src; // Definir origem do vídeo
+        // Adicionar evento de clique (opcional)
+        previewVideo.addEventListener('click', function() {
+        // Criar objeto de vídeo
+        const video = new Video();
+        video.src = previewVideo.src; // Definir origem do vídeo
 
-      // Reproduzir vídeo no clique
-      video.play();
+        // Reproduzir vídeo no clique
+        video.play();
+        });
+
+        // Apresentar elementos
+        previewDiv.appendChild(previewVideo);
+        previewDiv.appendChild(previewTitle);
+        videoPreviews.appendChild(previewDiv);
+    }
     });
-
-    // Apresentar elementos
-    previewDiv.appendChild(previewVideo);
-    previewDiv.appendChild(previewTitle);
-    videoPreviews.appendChild(previewDiv);
-  }
-});
 
 
 
     </script>
-    <script src="../../requests/cadastrarCurso.js"></script>
 </body>
+<script src="../../requests/cadastrarCurso.js"></script>
 </html>

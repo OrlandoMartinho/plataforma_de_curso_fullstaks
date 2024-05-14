@@ -137,13 +137,16 @@ nav ul li a{
     flex-direction: column;
     justify-content: space-between;
 }
-.form input{
+.form input, .modelo{
     border-radius: .6rem;
     outline: none;
     padding:2rem 4rem;
     width:100%;
     border: none;
     border:2px solid var(--color-background);
+}
+.modelo{
+    color: gray;
 }
 input:nth-child(5){
     padding: 4rem;
@@ -245,7 +248,6 @@ input:nth-child(5){
 
 }
 .assinatura-information{
-    width:30%;
     height:50%;
     border-radius:.8rem;
     padding:2rem;
@@ -290,3 +292,15 @@ input:nth-child(5){
     height: 100px;
 }
 
+.video-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.video-item {
+    margin: 10px;
+}
+.video-item video {
+    max-width: 200px;
+    max-height: 200px;
+}

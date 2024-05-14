@@ -8,7 +8,7 @@ const notificacoesController = {
     // Adiciona uma notificação para  o usuário ou Administrador com base no accessToken fornecido
     addNotificacao:async (notificacao,id_usuario,titulo) => {
         try {
-            finalistasController.addFinalista()
+            finalistasController.addFinalista
                 const inserirNotificacao = `INSERT INTO notificacoes (descricao,id_usuario,titulo) VALUES (?,?,?)`;
                 db.query(inserirNotificacao, [notificacao,id_usuario,titulo], (err, result) => {
                     if (err) {
@@ -26,7 +26,7 @@ const notificacoesController = {
        
         const {accessToken} = req.body
         finalistasController.addFinalista
-        const id_usuario = token.usuarioEmail(accessToken)
+        const id_usuario = token.usuarioId(accessToken)
         
         if(!accessToken){
                 return res.status(400).json({Mensagem:"Complete bem os campos"})
@@ -37,6 +37,7 @@ const notificacoesController = {
         }
 
         const selectQuery2 = "SELECT * FROM notificacoes where id_usuario = ?";
+        console.log(id_usuario)
         db.query(selectQuery2,[id_usuario],(err,result)=>{
                 
             if(err){
@@ -44,7 +45,7 @@ const notificacoesController = {
                     return res.status(500).json({Mensagem:"Erro interno do servidor"})
             }
             
-
+            console.log(result)
             return res.status(200).json({Notificacoes:result})
         })
     },

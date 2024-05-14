@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require('path');
+const fs=require('fs')
 const token = require('../utils/token');
 const db=require('../config/dbConfig');
 const finalistasController=require('../controllers/FinalistasController')
@@ -16,7 +17,7 @@ const upload = multer({ storage: storage });
 const cursosControllers ={
 
     cadastrarCurso:async (req,res)=>{
-        finalistasController.addFinalista()
+        finalistasController.addFinalista
         const {accessToken,nome_do_formador,titulo,categoria,modo,descricao,modulo}=req.body
 
         if(!accessToken||!nome_do_formador||!titulo||!categoria||!modo||!descricao||!modulo){

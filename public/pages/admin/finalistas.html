@@ -6,26 +6,10 @@
     <title>Home</title>
     <link rel="stylesheet" href="../../css/finalista.css">
     <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
-
+<script src="../../requests/autenticacaoADM.js"></script>
 </head>
 <body>
-    <div class="user-modal">
-        <div class="user-information">
-            <div class="upload">
-                <form action="">
-                    <label for="file-upload" class="custom-file-upload">
-                        <input id="file-upload" type="file" accept="video/*" multiple>
-                        <img src="../../assets/icon/upload.png" alt="">
-                        <h5>Carrega aqui os seus vídeos</h5>
-                        <p>Podes  carrega mais de 1000 GB</p>
-                    </label>
-                    <div class="video-previews">
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+ 
     <section class="items">
         <div class="lateral-menu">
             <img class="imgHome" src="../../assets/img/logoHome.png" alt="">
@@ -33,7 +17,7 @@
                 <ul>
                     <li class="center-items "><img src="../../assets/icon/home.png" alt=""><a href="home-admin.html">Visão global</a></li>
                     <li class="center-items "><img src="../../assets/icon/upload-cloud.svg" alt=""><a href="upload-initial.html">Cursos</a></li>
-                    <li class="center-items select"><img src="" alt=""><a href="finalistas.html">Finalistas</a></li>
+                    <li class="center-items select"><img src="../../assets/icon/icons8_books_1.png" alt=""><a href="finalistas.html">Finalistas</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,7 +35,7 @@
             </div>
             <h1>Lista dos Finalistas</h1>
             <div class="table-container">
-                <table>
+                <table id="tabela">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -61,22 +45,13 @@
                         <th>Adicionar Certificado</th>
                     </thead>
                     <tbody>
-                    <!-- Adicione mais linhas conforme necessário -->
-                    <tr>
-                        <td>1</td>
-                        <td>Manuel Pedro</td>
-                        <td>21</td>
-                        <td>20-05-2024</td>
-                        <td><button class="userView">Adicionar</button></td>
-                        
-                    </tr>
-                    <!-- Adicione mais linhas conforme necessário -->
+                 
                     </tbody>
                 </table>
             </div>
             
         </div>
     </section>
-    <script src="../../js/home-admin.js"></script>
+    <script src="../../requests/finalistas.js"></script>
 </body>
 </html>

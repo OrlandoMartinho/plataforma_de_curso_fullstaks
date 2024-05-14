@@ -23,8 +23,7 @@ const upload = multer({
         }
         cb(null, true);
     }
-}).single('file'); 
-
+}).single('file');
 
 const finalistasController = {
     
@@ -157,11 +156,9 @@ const finalistasController = {
                         return res.status(500).json({Mensagem:"Erro interno do servidor"})
                     }
 
-
-
                    const notificacao = "Voce recebeu um novo certificado";
-                   const titulo ="Certificado"
-                   notify.addNotificacao(notificacao,results.insertId,titulo);
+                   const titulo ="Certificado" 
+                   notify.addNotificacao(notificacao,results[0].id_usuario,titulo);
                    return res.status(201).json({ Mensagem: "Certificado cadastrado com sucesso"}); 
 
                    })
