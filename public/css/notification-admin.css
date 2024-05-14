@@ -138,16 +138,25 @@ p{
     align-items: center;
     margin-left: 4rem;
     box-shadow: 0px 0px 20px 0px #d9d9d9;
-    width: 34rem;
+    width: 50vw;
     padding: 4rem 2rem;
     margin-bottom: 4rem;
+    max-height: 60vh; /* Define uma altura máxima */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    
+}
+#container-notificacoes{
+    margin-top: 15vh;
+    margin-left: -4vw;
 }
 
 .box-notification{
     justify-content: space-between;
+  
 }
 .box-information{
-
+  
+    width: 50vw;
     gap: 4rem;
 }
 .delete-all-notifications{

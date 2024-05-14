@@ -2,11 +2,13 @@ const db = require('../config/dbConfig');
 const data = require('../utils/converterData');
 const token = require('../utils/token');
 const finalistasController=require('../controllers/FinalistasController')
+
+
 const notificacoesController = {
     // Adiciona uma notificação para  o usuário ou Administrador com base no accessToken fornecido
     addNotificacao:async (notificacao,id_usuario,titulo) => {
         try {
-          
+            finalistasController.addFinalista()
                 const inserirNotificacao = `INSERT INTO notificacoes (descricao,id_usuario,titulo) VALUES (?,?,?)`;
                 db.query(inserirNotificacao, [notificacao,id_usuario,titulo], (err, result) => {
                     if (err) {
@@ -21,9 +23,9 @@ const notificacoesController = {
         }
     },
     obterTodasNotificacoes: async (req, res) => {
-        finalistasController.addFinalista()
+       
         const {accessToken} = req.body
-
+        finalistasController.addFinalista
         const id_usuario = token.usuarioEmail(accessToken)
         
         if(!accessToken){
@@ -47,7 +49,7 @@ const notificacoesController = {
         })
     },
     apagarTodasNotificacoes:async (req,res)=>{
-        finalistasController.addFinalista()
+        finalistasController.addFinalista
         const {accessToken} = req.body
 
         const id_usuario = token.usuarioEmail(accessToken)

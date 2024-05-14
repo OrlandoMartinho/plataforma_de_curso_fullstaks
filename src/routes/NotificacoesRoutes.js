@@ -6,6 +6,6 @@ const notificacoesController = require('../controllers/NotificacoesController');
 router.post('/', notificacoesController.obterTodasNotificacoes);
 
 // Rota para apagar todas notificação de um usuario
-router.post('/apagar_notificacoes', notificacoesController.apagarTodasNotificacoes);
+router.delete('/', notificacoesController.apagarTodasNotificacoes);
 
 module.exports = router;
