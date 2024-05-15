@@ -200,3 +200,20 @@ p{
     margin-left: 1rem;
     background-color: var(--color-secondary);
 }
+.userView button{
+    border: none;
+    cursor: pointer;
+    color:#fff;
+    padding: 1rem 3rem;
+    border-radius: .6rem;
+    background-color: var(--color-secondary);
+}
+.userView button:nth-child(2){
+    background-color: var(--text-color);
+}
+.buttons-table{
+    gap:2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
