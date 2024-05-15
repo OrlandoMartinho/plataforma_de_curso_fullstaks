@@ -24,7 +24,7 @@ const cursosControllers ={
             return res.status(400).json({Mensagem:"Campos incompletos"})
         }
 
-        if(await !token.verificarEmailUsuario(accessToken)||token.usuarioId(accessToken)!=1){
+        if(! await token.verificarTokenUsuario(accessToken)||token.usuarioId(accessToken)!=1){
             return res.status(401).json({Mensagem:"Token inválido"})
         }
 
@@ -37,8 +37,8 @@ const cursosControllers ={
                 return res.status(500).json({Mensagem:"Erro interno do servidor"})
             }
                        
-            const uploadDirectory = path.join(__dirname,results.insertId+'');
-            
+            const uploadDirectory = path.join(__dirname,"..","..","uploads","cursos",results.insertId+'');
+            console.log(uploadDirectory)
             if (!fs.existsSync(uploadDirectory)){
                 fs.mkdirSync(uploadDirectory);
             }

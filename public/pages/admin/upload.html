@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="../../css/upload.css">
     <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
+    <script src="../../requests/autenticacaoADM.js"></script>
 </head>
 <body>
     <div class="assinatura">
@@ -68,7 +69,7 @@
                     <input class="description" type="text" placeholder="Descrição" >
                 </div>
                 <div class="upload">
-                    <form action="">
+                    <div id="form">
                         <label for="file-upload" class="custom-file-upload">
                             <input id="file-upload" type="file" accept="video/*" multiple>
                             <img src="../../assets/icon/upload.png" alt="">
@@ -78,10 +79,10 @@
                         <div class="video-previews">
     
                         </div>
-                        <div class="button">
+                      
                             <button class="btn-adicionar" id="cadastrar">Enviar</button>
-                        </div>
-                    </form>
+                      
+                    </div>
                     <div class="video-preview" id="video-preview"></div>
                 </div>
             </div>
