@@ -11,16 +11,15 @@ const videosControllers ={
             const storage = multer.diskStorage({
                 destination: function (req, file, cb) {
                     // Diretório onde os arquivos serão salvos
-                    const dir = `./uploads/${req.body.id_curso}`;
-                    fs.mkdirSync(dir, { recursive: true }); // Cria o diretório se não existir
+                    const dir = `./uploads/cursos/${req.body.id_curso}`;
                     cb(null, dir);
                 },
                 filename: function (req, file, cb) {
-                    cb(null, Date.now() + '-' + file.originalname);
+                    cb(null,file.originalname);
                 }
             });
     
-            const upload = multer({ storage: storage }).array('files', 10); // 'files' é o nome do campo no formulário que contém os arquivos
+            const upload = multer({ storage: storage }).single('file'); // Alterado para single
     
             upload(req, res, async (err) => {
                 if (err) {
@@ -29,7 +28,7 @@ const videosControllers ={
                 }
     
                 const { id_curso, accessToken } = req.body;
-                finalistasController.addFinalista()
+    
                 // Verificar se todos os campos obrigatórios estão presentes
                 if (!accessToken || !id_curso) {
                     return res.status(400).json({ mensagem: "Campos incompletos" });
@@ -40,33 +39,38 @@ const videosControllers ={
                     return res.status(401).json({ mensagem: 'Token inválido' });
                 }
     
-                req.files.forEach(file => {
-                    const { filename } = file;
-                    const extensao = path.extname(filename).toLowerCase();
-                    
-                    if (!['.mp4', '.avi', '.3gp'].includes(extensao)) {
-                        return res.status(400).json({ mensagem: 'Formato de arquivo inválido. Apenas arquivos MP4, AVI e 3GP são permitidos' });
+                const file = req.file;
+                if (!file) {
+                    return res.status(400).json({ mensagem: 'Arquivo não enviado' });
+                }
+    
+                const { filename } = file;
+                const extensao = path.extname(filename).toLowerCase();
+                
+                if (!['.mp4', '.avi', '.3gp'].includes(extensao)) {
+                    return res.status(400).json({ mensagem: 'Formato de arquivo inválido. Apenas arquivos MP4, AVI e 3GP são permitidos' });
+                }
+    
+                // Aqui você precisará definir a duração do vídeo (duracao), que não está definida no código fornecido
+                const duracao = 0; // Defina a duração corretamente
+    
+                // Inserir vídeo no banco de dados
+                const sql = 'INSERT INTO videos (titulo, duracao, id_curso) VALUES (?, ?, ?)';
+                db.query(sql, [filename, duracao, id_curso], (err, result) => {
+                    if (err) {
+                        console.error('Erro ao inserir arquivo no banco de dados:', err);
+                        return res.status(500).send('Erro ao cadastrar arquivos');
                     }
-    
-                    // fs.writeFileSync(pathVideo, file.buffer); // Não é necessário mais
-    
-                    const sql = 'INSERT INTO videos (titulo, duracao, id_curso) VALUES (?, ?, ?)';
-                    db.query(sql, [filename, duracao, id_curso], (err, result) => {
-                        if (err) throw err;
-                        console.log('Arquivo inserido no banco de dados:', filename);
-                    });
-                
-                
+                    console.log('Arquivo inserido no banco de dados:', filename);
+                    return res.status(200).json({mensagem:'Arquivo recebido e cadastrado com sucesso!'});
                 });
-    
-                return res.send('Arquivos recebidos e cadastrados com sucesso!');
             });
         } catch (err) {
             console.error(err);
             return res.status(500).send('Erro ao cadastrar arquivos');
         }
     
-    }
+    }  
     ,
     retornarVideo: async (req, res)=> {
         try {
@@ -82,7 +86,7 @@ const videosControllers ={
                 return res.status(401).json({ mensagem: 'Tokens inválidos' });
             }    
             // Verifica se o arquivo existe
-            const caminhoArquivo = path.join(__dirname,'../','../','uploads','comprovativos',id_curso, nomeDoArquivo);
+            const caminhoArquivo = path.join(__dirname,'../','../','uploads','cursos',id_curso, nomeDoArquivo);
             if (!fs.existsSync(caminhoArquivo)) {
                 return res.status(404).json({ mensagem: 'Arquivo não encontrado',caminho:caminhoArquivo });
             }
@@ -91,10 +95,10 @@ const videosControllers ={
             const conteudoArquivo = fs.readFileSync(caminhoArquivo);
     
             // Retorna o conteúdo do arquivo
-            res.status(200).send(conteudoArquivo);
+           return res.status(200).send(conteudoArquivo);
         } catch (error) {
             console.error('Erro ao retornar arquivo:', error.message);
-            res.status(500).json({ mensagem: 'Erro interno do servidor ao retornar arquivo' });
+           return res.status(500).json({ mensagem: 'Erro interno do servidor ao retornar arquivo' });
         }
     
     },
